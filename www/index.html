@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" href="css/formoid-solid-dark.css" type="text/css" />
+    <title>Volunteer Data Form</title>
+</head>
+<body>
+    <div class="app">
+
+    </div>
+
+    <form id="login" class="formoid-solid-dark" style="background-color:#FFFFFF;font-size:14px;font-family:'Roboto',Arial,Helvetica,sans-serif;color:#34495E;">
+        <div class="title"><h2>Login Form</h2>  </div>
+        <div class="element-email">
+            <div class="item-cont">
+                <input type="text" class="large pat" id="employee"  name="employee" value="" 
+                       regex='^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+                       placeholder="Employee Email" />
+                <span class="icon-place"></span>
+            </div>
+        </div>
+        <div class="element-input">
+            <div class="item-cont">
+                <input type="text" class="large" 
+                       regex="(^$)|(^[A-z| |\d|'|,|-]{2,100}$)"
+                        id="org" name="input2" value="" placeholder="Organization" />
+                <span class="icon-place"></span>
+            </div>
+        </div>
+        <div class="element-input">
+            <div class="item-cont">
+                <input type="text" class="large" regex="^[A-z| |\d|'|,|-]{2,100}$" id="event" name="input3" value=""
+                        placeholder="Event" />
+                <span class="icon-place"></span>
+            </div>
+        </div>        
+        <div class="submit" style="display:block">
+            <span class="LoginButton"><input type="submit" value="Login" /></span>            
+            <a id="btnAutoFill" class="BtnWrap MarginTop">Auto Fill</a>
+        </div>
+    </form>
+    
+
+    <form id="volunteerdata" class="formoid-solid-dark" 
+          style="display:none; background-color:#FFFFFF;font-size:14px;font-family:'Roboto',Arial,Helvetica,sans-serif;color:#34495E;" method="post">
+        <div class="title"><h2>Add Volunteer</h2> <a id="logout" class="BtnWrap btn-logout" style="margin-top:10px;"><i class="fa fa-sign-out"></i> Log Out</a></div>
+        <div>
+        <div class="element-name">
+            <span class="nameFirst">
+                <input type="text" regex="^[A-z| |'|,|-]{2,100}$" placeholder="First Name" id="vf_name" size="8"
+                        />
+                <span class="icon-place"></span>
+            </span>
+        </div>
+        <div class="element-name">
+            <span class="nameLast">
+                <input type="text" regex="^[A-z| |\d|'|,|-]{2,100}$" placeholder="Last Name" id="vl_name" size="14"
+                        />
+                <span class="icon-place"></span>
+            </span>
+        </div>
+        <div class="clearfix"></div>
+        </div>
+        <div class="element-radio">
+            <div class="column MFWrapper">
+                <label>
+                    <input type="radio" name="v_gender" value="Male" checked
+                            />
+                    <span>Male</span>
+                </label>
+            </div>
+            <span class="clearfix"></span>
+            <div class="column MFWrapper">
+                <label>
+                    <input type="radio" name="v_gender" value="Female" />
+                    <span>Female</span>
+                </label>
+            </div>
+            <span class="clearfix"></span>
+        </div>
+        <div class="element-number">
+            <div class="item-cont">
+                <input type="number" class="large" id="age" min="10" max="100" name="number"
+                       regex="^\d{2}$" placeholder="Age" value="" />
+                <span class="icon-place"></span>
+            </div>
+        </div>
+        <div class="element-phone">
+            <div class="item-cont">
+                <input type="tel" class="large" id="cell" 
+                       regex="^[+]?[\.\s\-\(\)\*\#0-9]{6,9}$" maxlength="9" name="phone"
+                        placeholder="Cell Phone" value="" />
+                <span class="icon-place"></span>
+            </div>
+        </div>
+        <div class="element-email">
+            <div class="item-cont">
+                <input type="text" class="large" id="v_email" name="email" 
+                       regex='^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
+                       value="" placeholder="Email" />
+                <span class="icon-place"></span>
+            </div>
+        </div>
+        <div class="element-input">
+            <div class="item-cont">
+                <input type="text" regex="^[A-z| |\d|'|,|-]{2,100}$" class="large" id="company" name="input2"
+                        value="" placeholder="Company" />
+                <span class="icon-place"></span>
+            </div>
+        </div>
+        <div class="element-radio">
+            <div class="columnAgree">                
+                <label>
+                    <input type="checkbox" id="agreed" value="agree" />
+                    <span>Do you agree to the terms and conditions of the RELEASE OF CLAIMS form?</span>
+                </label>
+            </div>
+        </div>
+        <h3 id="successmessage" style="display:none; color:white;background-color:green;text-align:center;margin-top:-10px; padding:10px"></h3>
+        <h3 id="errormessage" style="color:white;background-color:red;text-align:center"></h3>
+        <div class="submit">
+            <a id="btnViewFormData" class="BtnWrap btn-view"><i class="fa fa-eye"></i> View Form Data</a>
+            <span class="SaveButton"><input type="submit" class="btn-save" value="Save" /></span>
+        </div>
+        <div class="submit">
+            <a id="fileViewButton" class="BtnWrap btn-view" title=""><i class="fa fa-eye"></i> View File</a>
+            <a id="fileShareButton" class="BtnWrap MarginTop btn-file"> <i class="fa fa-envelope"></i> Email File</a>
+            <a id="fileDel" class="BtnWrap MarginTop btn-danger"><i class="fa fa-trash-o"></i> Delete File</a>
+        </div>
+        <textarea id="preparedFileText" style="min-height:150px">File Data Would be shown here</textarea>
+    </form>
+    
+    <div id="volunteerdataview" class="formoid-solid-dark"
+         style="display:none; background-color:#FFFFFF;font-size:14px;font-family:'Roboto',Arial,Helvetica,sans-serif;color:#34495E;">
+       <div class="title"><h2>Volunteer Data</h2></div>        
+       <div class="element-name">
+           <span>First Name</span> :
+           <span id="lb_fname"></span>
+       </div>
+       <div class="element-name">
+           <span>First Name</span> :
+           <span id="lb_lname"></span>
+       </div>
+       <div class="element-name">
+           <span>Gender</span> :
+           <span id="lb_gender"></span>
+       </div>
+       <div class="element-name">
+           <span>Age</span> :
+           <span id="lb_age"></span>
+       </div>
+       <div class="element-name">
+           <span>Phone</span> :
+           <span id="lb_phone"></span>
+       </div>
+       <div class="element-name">
+           <span>Email</span> : 
+           <span id="lb_email"></span>
+       </div>
+       <div class="element-input">
+           <span>Company</span> : 
+           <span id="lb_company"></span>
+       </div>
+       <div class="submit">
+           <input type="submit" id="btnGoToInputForm" value="OK" />
+       </div>
+   </div>
+    
+    <input type="hidden" id="duplicateEventCheck" />
+    <script type="text/javascript" src="js/libs/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/validator.js"></script>
+</body>
+</html>
